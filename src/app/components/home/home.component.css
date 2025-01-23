@@ -1,0 +1,52 @@
+body {
+       margin: 0;
+       padding: 0;
+   }
+#main{
+       margin: 20px;
+       padding: auto;
+}
+.container{
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
+       grid-row-gap: 1rem;
+       grid-column-gap: 1rem;
+}
+
+#flat {
+       padding: 2rem;
+       border: 1px solid rgb(210, 210, 210);
+
+     }
+.favorite {
+       color: red;  /* แสดงสีแดงเมื่อเป็น favorite */
+     }
+
+.filter{
+       display: flex;
+       margin-bottom: 10px;
+       height: 70px;
+       width: 100%;
+       padding: 10px;
+       text-align: center;
+       font-size: 15px;
+       gap: 20px;
+}
+ul {
+       list-style-type: none;
+       position: relative;
+       display: flex;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+     }
+li a {
+       border-radius: 20px;
+       float: left;
+       padding: 20px;
+       margin: 30px;
+     }
+
+ul.filter li {
+       flex: 1; /* ทำให้แต่ละรายการใน list มีขนาดเท่ากัน */
+     }

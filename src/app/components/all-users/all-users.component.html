@@ -1,0 +1,11 @@
+<div *ngIf="isAdmin">
+       <h1>All Users</h1>
+       <ul>
+         <li *ngFor="let user of users">
+           <p>{{ user.firstName }} {{ user.lastName }}</p>
+           <p>{{user.email}}, {{user.password}} </p>
+           <button (click)="editUser(user.id)">Edit</button>
+         </li>
+       </ul>
+     </div>
+     

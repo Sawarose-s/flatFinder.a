@@ -1,0 +1,68 @@
+<div class="main">
+       <h1>My Flats</h1>
+       <button mat-raised-button color="primary" routerLink="/newFlat" routerLinkActive="active">New Flat</button>
+       <div class="container">
+         <mat-card *ngFor="let flat of flats$" class="list">
+           <div id="flat">
+             <h3>City: {{ flat.city }}</h3>
+             <p>Street name: {{ flat.streetName }},Street Number{{ flat.streetNumber }}</p>
+             <p>Area size: {{ flat.areaSize }} sqm, Has AC: {{ flat.AC ? 'Yes' : 'No' }}</p>
+             <p>Year built: {{ flat.yearBuilt }}, Rent: {{ flat.rentPrice }} $</p>
+             <p>Date available: {{ flat.dateAvailable }}</p>
+             <p *ngIf="flat.addedBy">Added by: {{ flat.addedBy.firstName || 'Unknown' }} ({{ flat.addedBy.email || 'N/A' }})</p>
+             <button mat-raised-button color="primary" (click)="startEditing(flat)" *ngIf="!isEditing || currentFlatId !== flat.id">Edit</button>
+             <button mat-raised-button color="primary" (click)="deleteFlat(flat.id)">Delete</button>
+           </div>
+         </mat-card>
+     
+         <!-- แสดงฟอร์มแก้ไข -->
+         <form [formGroup]="editFlatForm" *ngIf="isEditing">
+           <mat-form-field class="full-width">
+             <mat-label>City</mat-label>
+             <input matInput formControlName="city" />
+           </mat-form-field>
+     
+           <mat-form-field class="full-width">
+             <mat-label>Street Name</mat-label>
+             <input matInput formControlName="streetName" />
+           </mat-form-field>
+     
+           <mat-form-field class="full-width">
+             <mat-label>Street Number</mat-label>
+             <input matInput formControlName="streetNumber" />
+           </mat-form-field>
+     
+           <mat-form-field class="full-width">
+             <mat-label>Area Size</mat-label>
+             <input matInput formControlName="areaSize" />
+           </mat-form-field>
+     
+           <div class="checkbox-container">
+              <mat-label>Has AC</mat-label>
+              <mat-radio-group formControlName="AC">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+           <mat-form-field class="full-width">
+             <mat-label>Rent Price</mat-label>
+             <input matInput formControlName="rentPrice" />
+           </mat-form-field>
+     
+           <mat-form-field class="full-width">
+             <mat-label>Year Built</mat-label>
+             <input matInput formControlName="yearBuilt" />
+           </mat-form-field>
+     
+           <mat-form-field class="full-width">
+             <mat-label>Date Available</mat-label>
+             <input matInput formControlName="dateAvailable" type="date" />
+           </mat-form-field>
+     
+           <button mat-raised-button color="primary" (click)="saveEdit()">Save <mat-icon>save</mat-icon></button>
+           <button mat-raised-button color="warn" (click)="cancelEdit()">Cancel</button>
+         </form>
+       </div>
+</div>
+     

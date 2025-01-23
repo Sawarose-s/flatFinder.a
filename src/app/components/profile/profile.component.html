@@ -1,0 +1,90 @@
+<div class="box">
+       <h1>Profile</h1>
+       <form class="my-form" [formGroup]="profileForm" (ngSubmit)="save()">
+         <!-- First Name -->
+         <mat-form-field class="full-width">
+           <mat-label>First Name:</mat-label>
+           <input
+             matInput
+             placeholder="First Name"
+             formControlName="firstName"
+             [readonly]="!isEditing"
+           />
+         </mat-form-field>
+     
+         <!-- Last Name -->
+         <mat-form-field class="full-width">
+           <mat-label>Last Name:</mat-label>
+           <input
+             matInput
+             placeholder="Last Name"
+             formControlName="lastName"
+             [readonly]="!isEditing"
+           />
+         </mat-form-field>
+     
+         <!-- Birth Date (Read-Only) -->
+         <mat-form-field class="full-width">
+           <mat-label>Birth Date:</mat-label>
+           <input
+             matInput
+             type="date"
+             formControlName="birthDate"
+             readonly
+           />
+         </mat-form-field>
+     
+         <!-- Email (Read-Only) -->
+         <mat-form-field class="full-width">
+           <mat-label>Email:</mat-label>
+           <input
+             matInput
+             placeholder="Email"
+             formControlName="email"
+             readonly
+           />
+         </mat-form-field>
+     
+         <!-- Password -->
+         <mat-form-field class="full-width">
+           <mat-label>Password:</mat-label>
+           <input
+             matInput
+             [type]="passwordFieldType"
+             formControlName="password"
+             [readonly]="!isEditing"
+           />
+           <button
+             mat-icon-button
+             type="button"
+             (click)="togglePasswordVisibility()"
+           >
+             <mat-icon>
+               {{ passwordFieldType === 'password' ? 'visibility' : 'visibility_off' }}
+             </mat-icon>
+           </button>
+         </mat-form-field>
+     
+         <!-- Buttons -->
+         <div>
+           <button
+             mat-raised-button
+             color="primary"
+             type="button"
+             (click)="edit()"
+             *ngIf="!isEditing"
+           >
+             Edit
+           </button>
+           <button
+             mat-raised-button
+             color="primary"
+             type="submit"
+             *ngIf="isEditing"
+           >
+             Save
+           </button>
+         </div>
+       </form>
+     </div>
+     

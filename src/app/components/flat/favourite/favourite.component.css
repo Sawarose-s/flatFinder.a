@@ -1,0 +1,73 @@
+body {
+       margin: 0;
+       padding: 0;
+       font-family: Arial, sans-serif;
+     }
+     
+     #main {
+       margin: 20px;
+       padding: 20px;
+       background-color: #f9f9f9;
+       border-radius: 8px;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     }
+     
+     .main {
+       text-align: center;
+     }
+     
+     .container {
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-around;
+       gap: 20px;
+     }
+     
+     mat-card.list {
+       width: 300px;
+       padding: 20px;
+       border-radius: 8px;
+       border: 1px solid #ddd;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+       background-color: #fff;
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+     }
+     
+     mat-card.list:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+     }
+     
+     #favFlat {
+       display: flex;
+       flex-direction: column;
+       gap: 15px;
+     }
+     
+     button.favorite {
+       background-color: red;
+       color: white;
+       padding: 8px 16px;
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+     }
+     
+     button.favorite:hover {
+       background-color: darkred;
+     }
+     
+     h1 {
+       font-size: 2em;
+       margin-bottom: 20px;
+     }
+     
+     p {
+       font-size: 1em;
+       margin: 5px 0;
+     }
+     
+     p.noFavorites {
+       font-style: italic;
+       color: gray;
+     }
+     

@@ -1,0 +1,44 @@
+<main>
+       <div class="box">
+              <h1>Login</h1>
+              <div id="mat-card-actions">
+                  <form class="my-form" [formGroup]="loginForm" 
+                  (ngSubmit)="onSubmit()"> 
+                     <mat-form-field class="full-width">
+                     <mat-label>Email</mat-label>
+                     <input matInput placeholder="email" name="email"
+                            id="email" formControlName="email" required>
+                     </mat-form-field>
+                      <br>
+                     <mat-form-field class="full-width">
+                     <mat-label>Password</mat-label>
+                     <input matInput placeholder="Password" name="password" type="password"
+                            id="password" formControlName="password" required
+                            [type]="passwordFieldType">
+                     <button type="button" mat-icon-button (click)="togglePasswordVisibility()" >
+                            <mat-icon>{{ passwordFieldType === 'password' ? 'visibility' : 'visibility_off' }}</mat-icon>
+                     </button>
+                     </mat-form-field>
+                      <br>
+                     <div>
+                      Don't have an account? 
+                      <a routerLink="/register" routerLinkActive="active">
+                            Sign up here</a>
+                     </div>
+                     <br>
+                     <div id="mat-card-actions">
+                     <button mat-raised-button color="primary" type="submit" 
+                       class="buttonSubmit" [disabled]="loginForm.invalid">
+                           Login
+                     </button>
+                     </div>
+                        <div *ngIf="showSpinner">
+                            <mat-spinner mode="indeterminate" diameter="17">
+                            </mat-spinner>
+                        </div>
+                        
+                    </form>
+              </div>
+       </div>
+    </main>
+    

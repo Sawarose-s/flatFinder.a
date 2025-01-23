@@ -1,0 +1,73 @@
+<div id="main">
+  <div *ngIf="isLoggedIn">
+    <h1>Welcome, {{ firstName }}!</h1>
+  </div>
+
+  <div class="filter">
+   <form [formGroup]="filterForm">
+     <ul class="filter">
+       <li>
+         <mat-form-field>
+           <mat-label>Search</mat-label>
+           <input matInput type="text" formControlName="searchText" placeholder="Search for city or street name">
+         </mat-form-field>
+       </li>
+       <li>
+         <label for="priceRange">Price Range</label>
+         <input type="range" id="priceRange" min="1" max="5000" formControlName="priceRange" (input)="updatePriceRange($event)">
+         <p>Price: 1 - {{ filterForm.get('priceRange')?.value }}</p>
+       </li>
+     </ul>
+   </form>
+ </div>
+ 
+
+  <div class="container">
+    <mat-card *ngFor="let flat of filteredFlats$" class="list">
+      <div id="flat">
+       <button (click)="toggleFavorite(flat)">
+         <div class="checkbox-container" [ngClass]="{'favorite': isFavorite(flat)}" type="checkbox" id="favorite">
+           <mat-label>♥︎ Favorites</mat-label>
+         </div>
+       </button>
+       
+        <!-- <button (click)="toggleFavorite(flat)" [ngClass]="{'favorite': isFavorite(flat)}">
+         <mat-icon>{{ isFavorite(flat) ? 'favorite' : 'favorite_border' }}</mat-icon>
+       </button> -->
+
+
+       
+        <h3>City: {{ flat.city }}</h3>
+        <p>Street name: {{ flat.streetName }}, Street Number: {{ flat.streetNumber }}</p>
+        <p>Area size: {{ flat.areaSize }} sqm, Has AC: {{ flat.AC ? 'Yes' : 'No' }}</p>
+        <p>Year built: {{ flat.yearBuilt }}, Rent: {{ flat.rentPrice }} $</p>
+        <p>Date available: {{ flat.dateAvailable }}</p>
+        <p *ngIf="flat.addedBy">
+          Added by: {{ flat.addedBy.firstName || 'Unknown' }} ({{ flat.addedBy.email || 'N/A' }})
+        </p>
+
+        <button (click)="loadFlatMessages(flat.id)">
+          {{ flat.isFlatviewOpen ? 'Close' : 'Open' }} Messages
+        </button>
+
+        <div *ngIf="flat.isFlatviewOpen">
+          <div *ngIf="flat.messages && flat.messages.length">
+            <h3>Messages</h3>
+            <div *ngFor="let message of flat.messages">
+              <p>{{ message.timestamp.toDate() | date: 'short' }} - {{ message.sender.firstName }} ({{ message.sender.email }}): {{ message.content }}</p>
+            </div>
+          </div>
+
+          <!-- Message form -->
+          <form [formGroup]="messageForms[flat.id]" (ngSubmit)="addMessage(flat.id)">
+            <mat-form-field>
+              <mat-label>Message</mat-label>
+              <input matInput formControlName="content" placeholder="Write a message" />
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="messageForms[flat.id].invalid">Add Message</button>
+          </form>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

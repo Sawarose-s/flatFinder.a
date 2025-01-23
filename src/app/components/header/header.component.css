@@ -1,0 +1,35 @@
+ul {
+       list-style-type: none;
+       position: relative;
+       display: flex;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+     }
+
+li {
+       float: left;
+     }
+
+li a {
+       display: block;
+       color: rgb(72, 68, 68);
+       text-align: center;
+       padding: 16px;
+       text-decoration: none;
+     }
+
+li a:hover {
+       background-color: white;;
+       color: rgb(216, 86, 125);
+       border-radius: 20px;
+     }
+
+#logo{
+  display: block;
+  color:rgb(23, 109, 109);
+  text-align: center;
+       padding: 16px;
+       text-decoration: none;
+}
+

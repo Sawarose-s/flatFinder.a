@@ -1,0 +1,67 @@
+<mat-toolbar color="accent">
+       <ul class="navigation-items">
+       <div class="navbar">
+              <li>
+                     <h2 id="logo">FlatFinder</h2>
+              </li>
+               <li>
+                     <a routerLink="/home"
+                     routerLinkActive="active">
+                     <mat-icon>home</mat-icon>
+                     Home
+                     </a>
+               </li>
+               <li *ngIf="!isLoggedIn">
+                     <a routerLink="/login"
+                     routerLinkActive="active">
+                     <mat-icon>login</mat-icon>
+                     Login</a>
+               </li>
+               <li>
+                     <a routerLink="/register" 
+                     routerLinkActive="active">
+                     <mat-icon>assignment_ind</mat-icon> 
+                     Register</a>
+                 </li>
+       </div>
+       <div class="isLoggedIn">
+              <li *ngIf="isLoggedIn">
+                     <a routerLink="/myFlat"
+                     routerLinkActive="active">
+                     <mat-icon>business</mat-icon> 
+                     My Flats</a>
+              </li>
+              <li *ngIf="isLoggedIn">
+                     <a routerLink="/favourite" 
+                     routerLinkActive="active">
+                     <mat-icon>favorite</mat-icon> 
+                     Favorite</a>
+              </li>
+              <li *ngIf="isLoggedIn">
+                     <a routerLink="/profile" 
+                     routerLinkActive="active">
+                     <mat-icon>face</mat-icon>
+                     Profile</a>
+              </li>
+              <li *ngIf="isLoggedIn">
+                     <a (click)="logout()">
+                       <mat-icon>logout</mat-icon>
+                       Logout
+                     </a>
+              </li>
+              <li *ngIf="isLoggedIn">
+                     <a (click)="deleteA()">
+                       <mat-icon>delete</mat-icon>
+                       Delete Account
+                     </a>
+              </li>
+       </div>
+       <div *ngIf="isAdmin"> 
+              <li>
+                     <a routerLink="/allUsers"
+                     routerLinkActive="active">
+                     All Users</a>
+              </li>
+       </div>
+       </ul>
+</mat-toolbar>

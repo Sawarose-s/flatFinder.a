@@ -1,0 +1,113 @@
+body {
+       margin: 0;
+       padding: 0;
+       font-family: Arial, sans-serif;
+     }
+     
+     #main {
+       margin: 40px;
+       padding: 20px;
+       background-color: #f7f7f7;
+       border-radius: 8px;
+       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+     }
+     
+     h1 {
+       font-size: 2em;
+       margin-bottom: 20px;
+       text-align: center;
+     }
+     
+     button {
+       margin-top: 10px;
+     }
+     
+     button.active {
+       background-color: #4caf50;
+       color: white;
+     }
+     
+     .container {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+       gap: 20px;
+     }
+     
+     mat-card.list {
+       padding: 20px;
+       border-radius: 8px;
+       border: 1px solid #ddd;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+       background-color: #fff;
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+       margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างการ์ด */
+     }
+     
+     mat-card.list:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+     }
+     
+     #flat {
+       padding: 20px;
+     }
+     
+     p {
+       font-size: 1em;
+       margin: 5px 0;
+     }
+     
+     form {
+       margin-top: 20px;
+       padding: 20px;
+       background-color: #fff;
+       border-radius: 8px;
+       border: 1px solid #ddd;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+       margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างฟอร์มและการ์ด */
+     }
+     
+     mat-form-field.full-width {
+       width: 100%;
+       margin-bottom: 15px;
+     }
+     
+     .checkbox-container {
+       display: flex;
+       gap: 20px;
+       align-items: center;
+       margin-bottom: 15px;
+     }
+     
+     mat-radio-group {
+       display: flex;
+       gap: 10px;
+     }
+     
+     button.mat-raised-button {
+       margin-top: 10px;
+       width: 100%;
+     }
+     
+     button.mat-raised-button.save {
+       background-color: #4caf50;
+       color: white;
+     }
+     
+     button.mat-raised-button.cancel {
+       background-color: #f44336;
+       color: white;
+     }
+     
+     button.mat-raised-button:hover {
+       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+     }
+     
+     /* เพิ่มระยะขอบรอบๆ ฟอร์มและการ์ด */
+     mat-card, form, #flat {
+       padding: 20px;
+       margin: 10px;
+       border-radius: 10px;
+     }
+     
+     

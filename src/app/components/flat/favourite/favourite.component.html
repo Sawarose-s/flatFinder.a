@@ -1,0 +1,39 @@
+<div class="main">
+  <h1>My Favourite</h1>
+  <div class="container">
+    <div *ngIf="loading; else favoritesList">
+      <p>Loading...</p>
+    </div>
+
+    <ng-template #favoritesList>
+      <ng-container *ngIf="favFlats$ | async as favFlats">
+        <!-- Fallback message if no favorites -->
+        <div *ngIf="favFlats.length === 0">
+          <p>No favorite flats available.</p>
+        </div>
+
+        <mat-card *ngFor="let flat of favFlats" class="list">
+          <div id="favFlat">
+            <!-- Favorite button -->
+            <button mat-raised-button color="primary" (click)="toggleFavorite(flat)" 
+                    [ngClass]="{'favorite': favorites.has(flat.id)}">
+                    <mat-label>♥︎ Favorites</mat-label>
+            </button>
+
+            <!-- Flat Details -->
+            <h3>City: {{ flat.city || 'Unknown City' }}</h3>
+            <p>Street name: {{ flat.streetName || 'Unknown Street' }}, Street Number: {{ flat.streetNumber || 'N/A' }}</p>
+            <p>Area size: {{ flat.areaSize || 'N/A' }} sqm, Has AC: {{ flat.AC ? 'Yes' : 'No' }}</p>
+            <p>Year built: {{ flat.yearBuilt || 'Unknown' }}, Rent: {{ flat.rentPrice || 'N/A' }} $</p>
+            <p>Date available: {{ flat.dateAvailable || 'N/A' }}</p>
+
+            <!-- Added by details -->
+            <p *ngIf="flat.addedBy">
+              Added by: {{ flat.addedBy.firstName || 'Unknown' }} ({{ flat.addedBy.email || 'N/A' }})
+            </p>
+          </div>
+        </mat-card>
+      </ng-container>
+    </ng-template>
+  </div>
+</div>
