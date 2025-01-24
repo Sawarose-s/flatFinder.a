@@ -8,6 +8,7 @@ import { FavouriteComponent } from './components/flat/favourite/favourite.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { AllUsersComponent } from './components/all-users/all-users.component';
 
+import { adminGuard } from './admin.guard';
 import { NewFlatComponent } from './components/flat/new-flat/new-flat.component';
 
 export const routes: Routes = [
@@ -17,7 +18,7 @@ export const routes: Routes = [
        { path: 'myFlat', component: MyFlatComponent },
        { path: 'favourite', component: FavouriteComponent },
        { path: 'profile', component: ProfileComponent },
-       { path: 'allUsers', component: AllUsersComponent },
+       { path: 'allUsers', component: AllUsersComponent, canActivate: [adminGuard] },
        { path: 'newFlat', component: NewFlatComponent },
        { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

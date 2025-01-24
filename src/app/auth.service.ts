@@ -8,6 +8,7 @@ import { signOut } from 'firebase/auth';
 import { environment } from '../environments/environment.development';
 import { collectionData } from '@angular/fire/firestore';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -82,6 +83,7 @@ export class AuthService {
     }
   }
 
+
   logout(): Promise<void> {
     return signOut(this.auth);  // Returns a promise that resolves when the user is signed out
   }
@@ -117,18 +119,18 @@ export class AuthService {
     return collectionData(favoritesCollection, { idField: 'id' });
   }
   
+  async getUserProfile(uid: string): Promise<any> {
+    const docRef = doc(this.firestore, 'users', uid);
+    const docSnap = await getDoc(docRef);
+    return docSnap.exists() ? docSnap.data() : null;
+  }
+
     // ฟังก์ชันเช็คว่าเป็นแอดมินหรือไม่
     async checkIfAdmin(uid: string): Promise<boolean> {
       try {
-        const userDocRef = doc(this.firestore, `users/${uid}`);
-        const userDoc = await getDoc(userDocRef);
-  
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          return userData?.['isAdmin'] ?? false;
-        } else {
-          return false; // ถ้าไม่มีเอกสารผู้ใช้ใน Firestore
-        }
+        const docRef = doc(this.firestore, 'users', uid);
+        const docSnap = await getDoc(docRef);
+        return docSnap.exists() ? docSnap.data()?.['isAdmin'] ?? false : false;
       } catch (error) {
         console.error('Error checking admin status:', error);
         return false;

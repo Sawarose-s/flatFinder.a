@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit{
       if (user) {
         this.isLoggedIn = true;
         this.firstName = user.displayName || 'User';  // ใช้ชื่อผู้ใช้หากมี
-        this.isAdmin = user.email === 'admin@example.com';  // ตัวอย่างการตรวจสอบว่าเป็น admin หรือไม่
+        this.isAdmin = user.email == 'admin@mail.com';  // ตัวอย่างการตรวจสอบว่าเป็น admin หรือไม่
       } else {
         this.isLoggedIn = false;
       }
